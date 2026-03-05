@@ -142,7 +142,7 @@ export default function AdminPage() {
     );
   }
 
-  const { stats, rsvps } = data || {};
+  const { stats } = data || {};
 
   return (
     <div className="min-h-screen bg-gray-50">

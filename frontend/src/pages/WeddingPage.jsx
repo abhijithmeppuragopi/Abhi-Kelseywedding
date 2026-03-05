@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
-  Heart, MapPin, Clock, Music, ChevronDown, Utensils,
-  Camera, Gem, Sparkles, Calendar, ArrowDown, ExternalLink
+  Heart, MapPin, Clock, Music, ChevronDown, Utensils, Gem, Sparkles, Calendar, ExternalLink
 } from 'lucide-react';
 
 const API_URL = process.env.REACT_APP_API_URL || '';
