@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Jost', sans-serif;
+    background-color: #fdf8f0;
+    color: #2c2c2c;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: 'Cormorant Garamond', serif; }
+  .font-script { font-family: 'Great Vibes', cursive; }
+  .font-body { font-family: 'Jost', sans-serif; }
+  
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #c9a96e 0%, #e8d5a3 50%, #c9a96e 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .gold-divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+    margin: 0 auto;
+  }
+
+  .section-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .section-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .overlay-dark {
+    background: linear-gradient(to bottom, 
+      rgba(0,0,0,0.15) 0%, 
+      rgba(0,0,0,0.45) 50%, 
+      rgba(0,0,0,0.65) 100%);
+  }
+
+  .card-hover {
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.15);
+  }
+
+  .btn-gold {
+    background: linear-gradient(135deg, #c9a96e, #a07840);
+    color: white;
+    font-family: 'Jost', sans-serif;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 1rem 2.5rem;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .btn-gold::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #e8d5a3, #c9a96e);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .btn-gold:hover::before { opacity: 1; }
+  .btn-gold span { position: relative; z-index: 1; }
+
+  .btn-outline-gold {
+    border: 1px solid #c9a96e;
+    color: #c9a96e;
+    font-family: 'Jost', sans-serif;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 1rem 2.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+  }
+  .btn-outline-gold:hover {
+    background: #c9a96e;
+    color: white;
+  }
+
+  .timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, #c9a96e 10%, #c9a96e 90%, transparent);
+    transform: translateX(-50%);
+  }
+}
+
+/* Petal animation */
+.petal {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  border-radius: 50% 0;
+  background: rgba(232, 180, 184, 0.6);
+  animation: petalFall linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes petalFall {
+  0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #fdf8f0; }
+::-webkit-scrollbar-thumb { background: #c9a96e; border-radius: 3px; }
