@@ -3,7 +3,6 @@ import { Users, Heart, X, CheckCircle, HelpCircle, Trash2, LogOut, Download } fr
 
 const API_URL = process.env.REACT_APP_API_URL || '';
 const ADMIN_KEY_STORAGE = 'wedding_admin_key';
-
 export default function AdminPage() {
   const [adminKey, setAdminKey] = useState(localStorage.getItem(ADMIN_KEY_STORAGE) || '');
   const [inputKey, setInputKey] = useState('');
@@ -77,9 +76,9 @@ export default function AdminPage() {
   };
 
   const exportCSV = () => {
-    const headers = ['Name', 'Email', 'Phone', 'Attending', 'Guests', 'Dietary', 'Message', 'Date'];
+    const headers = ['Name', 'Phone', 'Attending', 'Guests', 'Dietary', 'Message', 'Date'];
     const rows = data.rsvps.map(r => [
-      r.name, r.email, r.phone || '', r.attending, r.guests,
+      r.name, r.phone || '', r.attending, r.guests,
       r.dietaryRestrictions || '', r.message || '',
       new Date(r.createdAt).toLocaleDateString()
     ]);
@@ -100,7 +99,7 @@ export default function AdminPage() {
       no: 'bg-red-100 text-red-700',
       maybe: 'bg-yellow-100 text-yellow-700',
     };
-    const labels = { yes: '✓ Attending', no: '✗ Declining', maybe: '? Maybe' };
+    const labels = { yes: '✓ Attending', no: '✗ Declining'};
     return (
       <span className={`px-2 py-0.5 rounded text-xs font-medium ${styles[status]}`}>
         {labels[status]}
@@ -135,7 +134,7 @@ export default function AdminPage() {
             </button>
           </form>
           <p className="text-center font-body text-xs text-charcoal/30 mt-4">
-            Default key: abhijith-kelsey-2025
+            Default key: abhijith-kelsey-2026
           </p>
         </div>
       </div>
@@ -215,7 +214,7 @@ export default function AdminPage() {
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-100 bg-gray-50">
-                  {['Name', 'Email', 'Phone', 'Status', 'Guests', 'Dietary', 'Message', 'Date', ''].map(h => (
+                  {['Name', 'Phone', 'Status', 'Guests', 'Dietary', 'Message', 'Date', ''].map(h => (
                     <th key={h} className="px-5 py-4 text-left font-body text-xs tracking-widest uppercase text-gray-400">
                       {h}
                     </th>
@@ -233,7 +232,6 @@ export default function AdminPage() {
                   filtered.map(rsvp => (
                     <tr key={rsvp._id} className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
                       <td className="px-5 py-4 font-body text-sm font-medium text-charcoal">{rsvp.name}</td>
-                      <td className="px-5 py-4 font-body text-sm text-gray-500">{rsvp.email}</td>
                       <td className="px-5 py-4 font-body text-sm text-gray-500">{rsvp.phone || '—'}</td>
                       <td className="px-5 py-4">{attendingBadge(rsvp.attending)}</td>
                       <td className="px-5 py-4 font-body text-sm text-gray-500 text-center">{rsvp.guests}</td>

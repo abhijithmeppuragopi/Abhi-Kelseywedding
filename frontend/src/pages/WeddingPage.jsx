@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import {
-  Heart, MapPin, Clock, Music, ChevronDown, Utensils, Gem, Sparkles, Calendar, ExternalLink
+  Heart, MapPin, Clock, Music, ChevronDown, Gem, Sparkles, Calendar, ExternalLink
 } from 'lucide-react';
 
 const API_URL = process.env.REACT_APP_API_URL || '';
@@ -133,18 +133,18 @@ function LoveStory() {
       icon: <Sparkles size={20} />,
       tag: 'How We Met',
       title: 'A Chance Encounter',
-      year: '2020',
+      year: '2021',
       description: 'What started as a casual introduction turned into an evening neither of us wanted to end. From the very first conversation, we knew there was something extraordinary between us.',
-      image: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&q=80',
+      image: '/firstmeeting.jpeg',
       imageAlt: 'How we met',
     },
     {
       icon: <Calendar size={20} />,
       tag: 'First Date',
       title: 'The Night That Changed Everything',
-      year: '2020',
+      year: '2021',
       description: 'A candlelit dinner by the water, nervous smiles, and the realisation that this was just the beginning. We talked for hours and time seemed to stand completely still.',
-      image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80',
+      image: '/firstdate.jpeg',
       imageAlt: 'First date dinner',
     },
     {
@@ -153,7 +153,7 @@ function LoveStory() {
       title: 'She Said Yes',
       year: '2024',
       description: 'On a golden evening with the Mediterranean shimmering in the distance, Abhijith got down on one knee. Kelsey said yes before he could even finish the question.',
-      image: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600&q=80',
+      image: '/proposal.jpeg',
       imageAlt: 'Proposal',
     },
   ];
@@ -177,7 +177,7 @@ function LoveStory() {
               style={{ transitionDelay: `${i * 0.15}s` }}
             >
               {/* Photo */}
-              <div className="relative overflow-hidden h-64">
+              <div className="relative overflow-hidden h-66">
                 <img
                   src={story.image}
                   alt={story.imageAlt}
@@ -215,53 +215,39 @@ function LoveStory() {
 function Timeline() {
   const events = [
     {
-      time: '2:30 PM',
-      title: 'Guests Arrive',
-      desc: 'Welcome drinks served in the courtyard',
-      icon: <Sparkles size={18} />,
-      side: 'left',
-    },
-    {
-      time: '3:00 PM',
+      time: '5:00 PM',
       title: 'The Ceremony',
       desc: 'Exchange of vows at Palazzo Capua',
       icon: <Heart size={18} />,
       side: 'right',
     },
     {
-      time: '4:00 PM',
-      title: 'Cocktail Hour',
-      desc: 'Champagne & canapés in the gardens',
+      time: '6:00 PM',
+      title: 'Welcome drink',
+      desc: 'Champagne & canapés in Ax the Palace',
       icon: <Music size={18} />,
       side: 'left',
     },
     {
-      time: '5:30 PM',
-      title: 'Wedding Dinner',
-      desc: 'Five-course reception at AX The Palace',
-      icon: <Utensils size={18} />,
-      side: 'right',
-    },
-    {
-      time: '7:30 PM',
-      title: 'First Dance',
-      desc: 'Mr & Mrs take to the floor',
-      icon: <Heart size={18} className="fill-current" />,
-      side: 'left',
-    },
-    {
-      time: '8:00 PM',
-      title: 'Cake Cutting',
-      desc: 'Sweet celebrations & toasts',
+      time: '7:00 PM',
+      title: 'Receiption Begins',
+      desc: 'everyone should be seated by 6:45',
       icon: <Sparkles size={18} />,
       side: 'right',
     },
+     {
+      time: '9:30 PM',
+      title: 'Cake Cutting',
+      desc: 'Sweet celebrations & toasts',
+      icon: <Sparkles size={18} />,
+      side: 'left',
+    },
     {
-      time: '8:30 PM',
+      time: '10:00 PM',
       title: 'After Party',
       desc: 'Dancing the night away until midnight',
       icon: <Music size={18} />,
-      side: 'left',
+      side: 'right',
     },
   ];
 
@@ -328,18 +314,18 @@ function Venue() {
       name: 'Palazzo Capua',
       location: 'Sliema, Malta',
       description: 'A breathtaking 18th-century palazzo steeped in Maltese heritage. Its ornate architecture and lush gardens provide the perfect backdrop for our exchange of vows.',
-      image: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80',
-      time: '3:00 PM',
-      details: ['Historic Baroque Architecture', 'Private Courtyard Gardens', 'Sea Views'],
+      image: '/Palazzo-Capua-Hotel-Gallery-Events.jpg',
+      time: '5:00 PM',
+      details: ['Historic Baroque Architecture', 'Private Courtyard Gardens'],
     },
     {
       type: 'Reception',
       name: 'AX The Palace',
       location: 'Sliema, Malta',
       description: 'A five-star luxury hotel with grand ballrooms and panoramic Mediterranean views. The ultimate setting for an unforgettable evening of dining and dancing.',
-      image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80',
-      time: '5:30 PM',
-      details: ['5-Star Luxury Hotel', 'Grand Ballroom', 'Mediterranean Terrace'],
+      image: '/Royal-Hall-2.jpg',
+      time: '7:00 PM',
+      details: ['5-Star Luxury Hotel', 'Grand Ballroom'],
     },
   ];
 
@@ -407,28 +393,16 @@ function Venue() {
 function Attire() {
   const items = [
     {
-      icon: '👗',
-      title: 'Bride',
-      subtitle: 'Formal Gown',
-      description: 'Floor-length gown in ivory or champagne tones. Elegant and timeless.',
-    },
-    {
-      icon: '🤵',
-      title: 'Groom',
-      subtitle: 'Black Tie',
-      description: 'Classic black tuxedo with white dress shirt and bow tie.',
-    },
-    {
       icon: '👒',
       title: 'Guests — Ladies',
       subtitle: 'Cocktail to Formal',
-      description: 'Elegant cocktail dresses, gowns, or dressy separates. Heels encouraged.',
+      description: 'Elegant cocktail dresses, gowns, or dressy separates.',
     },
     {
       icon: '🎩',
       title: 'Guests — Gentlemen',
       subtitle: 'Smart Formal',
-      description: 'Dark suits or tuxedos. Ties required. Pocket squares always appreciated.',
+      description: 'Dark suits or tuxedos. Ties required.',
     },
   ];
 
@@ -538,7 +512,7 @@ function MapSection() {
 /* ─── RSVP Section ────────────────────────────── */
 function RSVPSection() {
   const [form, setForm] = useState({
-    name: '', email: '', phone: '', attending: '',
+    name: '', phone: '', attending: '',
     guests: 1, dietaryRestrictions: '', message: ''
   });
   const [status, setStatus] = useState(null); // null | 'loading' | 'success' | 'error'
@@ -562,7 +536,7 @@ function RSVPSection() {
       const data = await res.json();
       if (data.success) {
         setStatus('success');
-        setForm({ name: '', email: '', phone: '', attending: '', guests: 1, dietaryRestrictions: '', message: '' });
+        setForm({ name: '', phone: '', attending: '', guests: 1, dietaryRestrictions: '', message: '' });
       } else {
         setStatus('error');
         setErrorMsg(data.error || 'Something went wrong.');
@@ -588,7 +562,7 @@ function RSVPSection() {
             RSVP
           </h2>
           <p className="font-display text-lg text-charcoal/60 italic mb-6">
-            Kindly respond by August 1, 2025
+            Kindly respond by May 16, 2026
           </p>
           <div className="gold-divider" />
         </div>
@@ -613,11 +587,6 @@ function RSVPSection() {
                 <input name="name" value={form.name} onChange={handleChange} required
                   placeholder="Your full name" className={inputClass} />
               </div>
-              <div>
-                <label className={labelClass}>Email *</label>
-                <input name="email" type="email" value={form.email} onChange={handleChange} required
-                  placeholder="your@email.com" className={inputClass} />
-              </div>
             </div>
 
             {/* Phone */}
@@ -631,7 +600,7 @@ function RSVPSection() {
             <div>
               <label className={labelClass}>Will you be attending? *</label>
               <div className="flex gap-4 mt-3">
-                {['yes', 'no', 'maybe'].map(opt => (
+                {['yes', 'no'].map(opt => (
                   <button
                     key={opt}
                     type="button"
@@ -642,7 +611,7 @@ function RSVPSection() {
                         : 'border-charcoal/20 text-charcoal/50 hover:border-gold hover:text-gold'
                     }`}
                   >
-                    {opt === 'yes' ? 'Joyfully Accept' : opt === 'no' ? 'Regretfully Decline' : 'Maybe'}
+                    {opt === 'yes' ? 'Joyfully Accept' : 'Regretfully Decline'}
                   </button>
                 ))}
               </div>
@@ -708,7 +677,7 @@ function Footer() {
       </div>
       <h3 className="font-script text-4xl text-gold mb-3">Abhijith & Kelsey</h3>
       <p className="font-body text-ivory/30 text-xs tracking-widest uppercase mb-2">
-        September 20, 2025 · Sliema, Malta
+        June 06, 2026 · Sliema, Malta
       </p>
       <p className="font-display text-ivory/20 text-sm italic mt-6">
         Made with love, for love.
