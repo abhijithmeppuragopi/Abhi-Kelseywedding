@@ -527,23 +527,34 @@ function RSVPSection() {
     e.preventDefault();
     setStatus('loading');
     setErrorMsg('');
+    
+
     try {
       const res = await fetch(`${API_URL}/api/rsvp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
+      
       const data = await res.json();
-      if (data.success) {
+      console.log('RSVP response:', data, 'Status:', res.status);
+      
+      if (res.ok && (data.success === true || data.success === 'true')) {
         setStatus('success');
         setForm({ name: '', phone: '', attending: '', guests: 1, dietaryRestrictions: '', message: '' });
+        // Scroll to show success message
+        const rsvpSection = document.getElementById('rsvp');
+        if (rsvpSection) {
+          rsvpSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
       } else {
         setStatus('error');
-        setErrorMsg(data.error || 'Something went wrong.');
+        setErrorMsg(data.error || data.message || 'Something went wrong.');
       }
-    } catch {
+    } catch (err) {
       setStatus('error');
       setErrorMsg('Could not connect to server. Please try again.');
+      console.error('RSVP error:', err);
     }
   };
 
@@ -553,8 +564,17 @@ function RSVPSection() {
   return (
     <section id="rsvp" className="py-28 bg-ivory relative overflow-hidden">
       {/* Decorative background */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent" />
 
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent" />
+    {status === 'success' ? (
+          <div className="text-center py-20" style={{ opacity: 1, transform: 'none', transition: 'none' }}>
+            <div className="text-5xl mb-6">💌</div>
+            <h3 className="font-display text-4xl text-charcoal font-light mb-4">Thank You!</h3>
+            <p className="font-body text-charcoal/60">
+              Your RSVP has been received. We can't wait to celebrate with you.
+            </p>
+          </div>
+        ) : (
       <div className="max-w-2xl mx-auto px-6">
         <div className="text-center mb-16 section-reveal">
           <p className="font-body text-gold tracking-widest text-xs uppercase mb-4">Join the Celebration</p>
@@ -567,18 +587,6 @@ function RSVPSection() {
           <div className="gold-divider" />
         </div>
 
-        {status === 'success' ? (
-          <div className="text-center py-20 section-reveal">
-            <div className="text-5xl mb-6">💌</div>
-            <h3 className="font-display text-4xl text-charcoal font-light mb-4">Thank You!</h3>
-            <p className="font-body text-charcoal/60">
-              Your RSVP has been received. We can't wait to celebrate with you.
-            </p>
-            <button onClick={() => setStatus(null)} className="btn-outline-gold mt-8 text-xs">
-              Submit Another RSVP
-            </button>
-          </div>
-        ) : (
           <form onSubmit={handleSubmit} className="space-y-8 section-reveal">
             {/* Name & Email */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -660,8 +668,9 @@ function RSVPSection() {
               </button>
             </div>
           </form>
-        )}
+        
       </div>
+      )}
     </section>
   );
 }
