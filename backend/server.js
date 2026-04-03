@@ -16,7 +16,6 @@ mongoose.connect(MONGODB_URI)
 // RSVP Schema
 const rsvpSchema = new mongoose.Schema({
   name: { type: String, required: true, trim: true },
-  email: { type: String, required: true, trim: true, lowercase: true },
   phone: { type: String, trim: true },
   attending: { type: String, enum: ['yes', 'no', 'maybe'], required: true },
   guests: { type: Number, default: 1, min: 1, max: 10 },
@@ -31,14 +30,14 @@ const RSVP = mongoose.model('RSVP', rsvpSchema);
 // Submit RSVP
 app.post('/api/rsvp', async (req, res) => {
   try {
-    const { name, email, phone, attending, guests, dietaryRestrictions, message } = req.body;
+    const { name, phone, attending, guests, dietaryRestrictions, message } = req.body;
     
-    if (!name || !email || !attending) {
-      return res.status(400).json({ error: 'Name, email, and attendance status are required.' });
+    if (!name || !attending) {
+      return res.status(400).json({ error: 'Name and attendance status are required.' });
     }
 
-    // Check if email already submitted
-    const existing = await RSVP.findOne({ email });
+    // Check if phone already submitted
+    const existing = await RSVP.findOne({ phone });
     if (existing) {
       // Update existing
       Object.assign(existing, { name, phone, attending, guests, dietaryRestrictions, message });
@@ -46,7 +45,7 @@ app.post('/api/rsvp', async (req, res) => {
       return res.json({ success: true, message: 'RSVP updated successfully!', updated: true });
     }
 
-    const rsvp = new RSVP({ name, email, phone, attending, guests, dietaryRestrictions, message });
+    const rsvp = new RSVP({ name, phone, attending, guests, dietaryRestrictions, message });
     await rsvp.save();
     res.status(201).json({ success: true, message: 'RSVP submitted successfully!' });
   } catch (err) {
@@ -83,7 +82,7 @@ app.get('/api/admin/rsvps', async (req, res) => {
 app.delete('/api/admin/rsvps/:id', async (req, res) => {
   try {
     const adminKey = req.headers['x-admin-key'];
-    if (adminKey !== (process.env.ADMIN_KEY || 'abhijith-kelsey-2025')) {
+    if (adminKey !== (process.env.ADMIN_KEY || 'abhijith-kelsey-2026')) {
       return res.status(401).json({ error: 'Unauthorized' });
     }
     await RSVP.findByIdAndDelete(req.params.id);
