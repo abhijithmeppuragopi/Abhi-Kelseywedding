@@ -224,19 +224,19 @@ function Timeline() {
     {
       time: '6:00 PM',
       title: 'Welcome drink',
-      desc: 'Champagne & canapés in Ax the Palace',
+      desc: 'Champagne & canapés',
       icon: <Music size={18} />,
       side: 'left',
     },
     {
       time: '7:00 PM',
-      title: 'Receiption Begins',
+      title: 'Receiption Begins at Royal Hall',
       desc: 'everyone should be seated by 6:45',
       icon: <Sparkles size={18} />,
       side: 'right',
     },
      {
-      time: '9:30 PM',
+      time: '9:45 PM',
       title: 'Cake Cutting',
       desc: 'Sweet celebrations & toasts',
       icon: <Sparkles size={18} />,
@@ -313,19 +313,19 @@ function Venue() {
       type: 'Ceremony',
       name: 'Palazzo Capua',
       location: 'Sliema, Malta',
-      description: 'A breathtaking 18th-century palazzo steeped in Maltese heritage. Its ornate architecture and lush gardens provide the perfect backdrop for our exchange of vows.',
+      description: 'Palazzo Capua, also known as Capua Palace, is an early 19th-century Neoclassic palace in Sliema, Malta.',
       image: '/Palazzo-Capua-Hotel-Gallery-Events.jpg',
       time: '5:00 PM',
       details: ['Historic Baroque Architecture', 'Private Courtyard Gardens'],
     },
     {
       type: 'Reception',
-      name: 'AX The Palace',
+      name: 'Royal Hall at AX The Palace',
       location: 'Sliema, Malta',
-      description: 'A five-star luxury hotel with grand ballrooms and panoramic Mediterranean views. The ultimate setting for an unforgettable evening of dining and dancing.',
+      description: 'A five-star luxury hotel with panoramic Mediterranean views. The ultimate setting for an unforgettable evening of dining and dancing.',
       image: '/Royal-Hall-2.jpg',
-      time: '7:00 PM',
-      details: ['5-Star Luxury Hotel', 'Grand Ballroom'],
+      time: '6:45 PM',
+      details: ['5-Star Luxury Hotel', 'Royal Hall'],
     },
   ];
 
@@ -402,7 +402,7 @@ function Attire() {
       icon: '🎩',
       title: 'Guests — Gentlemen',
       subtitle: 'Smart Formal',
-      description: 'Dark suits or tuxedos. Ties required.',
+      description: 'Dark suits or tuxedos.',
     },
   ];
 
