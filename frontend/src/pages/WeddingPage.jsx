@@ -134,7 +134,7 @@ function LoveStory() {
       tag: 'How We Met',
       title: 'A Chance Encounter',
       year: '2021',
-      description: 'What started as a casual introduction turned into an evening neither of us wanted to end. From the very first conversation, we knew there was something extraordinary between us.',
+      description: 'We met at work in April 2021 when we both joined the same company.What began with a shy hello (and a small misunderstanding!) quickly turned into a friendship filled with laughter, shared interests, and a deep connection. And the rest is history',
       image: '/firstmeeting.jpeg',
       imageAlt: 'How we met',
     },
@@ -143,7 +143,7 @@ function LoveStory() {
       tag: 'First Date',
       title: 'The Night That Changed Everything',
       year: '2021',
-      description: 'A candlelit dinner by the water, nervous smiles, and the realisation that this was just the beginning. We talked for hours and time seemed to stand completely still.',
+      description: 'Our first "Date" was as uncertain as it was memorable. Neither of us was quite sure if it was actually a date, and there was a bit of awkardness in the air. We went for a walk, watch the beautiful sunset together and parted ways still unsure if this was a date or not. But somehow, it was the beginning of everything',
       image: '/firstdate.jpeg',
       imageAlt: 'First date dinner',
     },
@@ -152,7 +152,7 @@ function LoveStory() {
       tag: 'The Proposal',
       title: 'She Said Yes',
       year: '2024',
-      description: 'On a golden evening with the Mediterranean shimmering in the distance, Abhijith got down on one knee. Kelsey said yes before he could even finish the question.',
+      description: 'In Kerala, surrounded by both our families during the Onam celebrations, we dressed in traditional attire for an early morning photoshoot. As we took our final photo, Abhijith got down on one knee and asked Kelsey to marry him. Overcome with joy, laughter and happy tears, Kelsey said yes without hesitation.',
       image: '/proposal.jpeg',
       imageAlt: 'Proposal',
     },
@@ -230,25 +230,32 @@ function Timeline() {
     },
     {
       time: '7:00 PM',
-      title: 'Receiption Begins at Royal Hall',
-      desc: 'everyone should be seated by 6:45',
+      title: 'Reception at Royal Hall',
+      desc: 'please be seated by 6:45',
       icon: <Sparkles size={18} />,
       side: 'right',
     },
-     {
+    {
       time: '9:45 PM',
-      title: 'Cake Cutting',
-      desc: 'Sweet celebrations & toasts',
-      icon: <Sparkles size={18} />,
+      title: 'First Dance',
+      desc: 'A magical moment to kick off the celebrations',
+      icon: <Music size={18} />,
       side: 'left',
     },
     {
       time: '10:00 PM',
       title: 'After Party',
-      desc: 'Dancing the night away until midnight',
+      desc: 'Grab a cocktail and hit the dance floor!',
       icon: <Music size={18} />,
       side: 'right',
     },
+    {
+      time: '11:30 PM',
+      title: 'Cake Cutting',
+      desc: 'Sweet celebrations & toasts',
+      icon: <Sparkles size={18} />,
+      side: 'left',
+    }
   ];
 
   return (
@@ -313,19 +320,17 @@ function Venue() {
       type: 'Ceremony',
       name: 'Palazzo Capua',
       location: 'Sliema, Malta',
-      description: 'Palazzo Capua, also known as Capua Palace, is an early 19th-century Neoclassic palace in Sliema, Malta.',
+      description: 'Join us at Palazzo Capua where we will exchange vows and commit to a lifetime together.',
       image: '/Palazzo-Capua-Hotel-Gallery-Events.jpg',
-      time: '5:00 PM',
-      details: ['Historic Baroque Architecture', 'Private Courtyard Gardens'],
+      time: '5:00 PM'
     },
     {
       type: 'Reception',
       name: 'Royal Hall at AX The Palace',
       location: 'Sliema, Malta',
-      description: 'A five-star luxury hotel with panoramic Mediterranean views. The ultimate setting for an unforgettable evening of dining and dancing.',
+      description: 'We invite you to join us at the AX royal hall for a seated buffet dinner as we start our new life together. PLease make sure to be seated by 18:45. ',
       image: '/Royal-Hall-2.jpg',
-      time: '6:45 PM',
-      details: ['5-Star Luxury Hotel', 'Royal Hall'],
+      time: '6:45 PM'
     },
   ];
 
@@ -372,14 +377,6 @@ function Venue() {
                 <p className="font-body text-charcoal/70 text-sm leading-relaxed mb-6">
                   {venue.description}
                 </p>
-                <ul className="space-y-2">
-                  {venue.details.map((d, j) => (
-                    <li key={j} className="flex items-center gap-3 font-body text-xs text-charcoal/60 tracking-wide uppercase">
-                      <div className="w-1 h-1 bg-gold rounded-full" />
-                      {d}
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
           ))}
@@ -394,15 +391,15 @@ function Attire() {
   const items = [
     {
       icon: '👒',
-      title: 'Guests — Ladies',
+      title: 'For theLadies',
       subtitle: 'Cocktail to Formal',
-      description: 'Elegant cocktail dresses, gowns, or dressy separates.',
+      description: 'Please avoid wearing white or pastel shades as these are the bridal colours.',
     },
     {
       icon: '🎩',
-      title: 'Guests — Gentlemen',
+      title: 'For the Gents',
       subtitle: 'Smart Formal',
-      description: 'Dark suits or tuxedos.',
+      description: 'Suits or tuxedos.',
     },
   ];
 
@@ -582,7 +579,7 @@ function RSVPSection() {
             RSVP
           </h2>
           <p className="font-display text-lg text-charcoal/60 italic mb-6">
-            Kindly respond by May 16, 2026
+            Kindly respond by April 31, 2026
           </p>
           <div className="gold-divider" />
         </div>
