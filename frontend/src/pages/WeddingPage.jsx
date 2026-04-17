@@ -704,7 +704,7 @@ function RSVPSection() {
             RSVP
           </h2>
           <p className="font-display text-lg text-charcoal/60 italic mb-6">
-            Kindly respond by April 31, 2026
+            Kindly respond by April 30, 2026
           </p>
           <div className="gold-divider" />
         </div>
