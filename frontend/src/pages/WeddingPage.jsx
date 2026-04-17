@@ -416,7 +416,6 @@ function Attire() {
           <h2 className="font-display text-5xl md:text-6xl text-ivory font-light mb-4">
             Wedding Attire
           </h2>
-          <p className="font-display text-xl text-gold/80 italic">Black Tie & Formal</p>
           <div className="gold-divider mt-6" />
         </div>
 
@@ -440,6 +439,132 @@ function Attire() {
           <p className="font-display text-lg text-ivory/60 italic">
             "Come dressed to celebrate — we want to make beautiful memories together."
           </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// carousal for photos using tailwind css and react hooks
+
+
+/* ─── Photo Carousel Section ────────────────── */
+function PhotoCarousel() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const photos = [
+    { src: '/IMG_6722.jpg', alt: 'Our first meeting', caption: 'The moment we met' },
+    { src: '/IMG_6741.jpg', alt: 'Our first date', caption: 'Our first date' },
+    { src: '/IMG_6759.jpg', alt: 'The proposal', caption: 'The magical proposal' },
+    { src: '/IMG_6850.jpg', alt: 'Memory 4', caption: 'Beautiful memory' },
+    { src: '/IMG_6898.jpg', alt: 'Memory 5', caption: 'Forever together' },
+    { src: '/IMG_6936.jpg', alt: 'Memory 5', caption: 'Forever together' },
+    { src: '/IMG_6951.jpg', alt: 'Memory 5', caption: 'Forever together' },
+    { src: '/IMG_7007.jpg', alt: 'Memory 5', caption: 'Forever together' },
+  ];
+
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % photos.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, photos.length]);
+
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+    setIsAutoPlaying(false);
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % photos.length);
+    setIsAutoPlaying(false);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + photos.length) % photos.length);
+    setIsAutoPlaying(false);
+  };
+
+  return (
+    <section id="photos" className="py-28 bg-ivory relative overflow-hidden">
+      {/* Decorative background pattern */}
+      <div className="absolute inset-0 opacity-5"
+        style={{ backgroundImage: `radial-gradient(circle, #c9a96e 1px, transparent 1px)`, backgroundSize: '40px 40px' }} />
+
+      <div className="max-w-6xl mx-auto px-6 relative">
+        <div className="text-center mb-16 section-reveal">
+      
+          <h2 className="font-display text-5xl md:text-6xl text-charcoal font-light mb-6">
+            Pre Wedding
+          </h2>
+          <div className="gold-divider" />
+        </div>
+
+        <div className="relative section-reveal">
+          {/* Main carousel container */}
+          <div className="relative h-96 md:h-[500px] overflow-hidden rounded-lg shadow-2xl">
+            {photos.map((photo, index) => (
+              <div
+                key={index}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  index === currentIndex ? 'opacity-100' : 'opacity-0'
+                }`}
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.src = 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80';
+                  }}
+                />
+                
+              </div>
+            ))}
+attire
+            {/* Navigation arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 shadow-lg"
+            >
+              <ChevronDown size={20} className="rotate-90" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 shadow-lg"
+            >
+              <ChevronDown size={20} className="-rotate-90" />
+            </button>
+          </div>
+
+          {/* Dots indicator */}
+          <div className="flex justify-center gap-3 mt-8">
+            {photos.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? 'bg-gold scale-125'
+                    : 'bg-charcoal/30 hover:bg-charcoal/50'
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Auto-play toggle */}
+          <div className="text-center mt-6">
+            <button
+              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+              className="font-body text-xs tracking-widest uppercase text-charcoal/60 hover:text-gold transition-colors"
+            >
+              {isAutoPlaying ? 'Pause Auto-play' : 'Resume Auto-play'}
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -534,7 +659,7 @@ function RSVPSection() {
       });
       
       const data = await res.json();
-      console.log('RSVP response:', data, 'Status:', res.status);
+     
       
       if (res.ok && (data.success === true || data.success === 'true')) {
         setStatus('success');
@@ -723,6 +848,7 @@ export default function WeddingPage() {
       <Timeline />
       <Venue />
       <Attire />
+      <PhotoCarousel />
       <MapSection />
       <RSVPSection />
       <Footer />
